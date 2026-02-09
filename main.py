@@ -15,7 +15,7 @@ def run_inference():
     # Video Kaynağını Aç
     cap = cv2.VideoCapture(SOURCE_PATH)
     
-    # Video Özelliklerini Al (Kaydetmek için gerekli)
+    # Video Özelliklerini Al
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = int(cap.get(cv2.CAP_PROP_FPS))
@@ -24,7 +24,7 @@ def run_inference():
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = cv2.VideoWriter(OUTPUT_PATH, fourcc, fps, (width, height))
 
-    print("🎥 Analiz başladı. Çıkmak için 'q' tuşuna basınız.")
+    print("Analiz başladı. Çıkmak için 'q' tuşuna basınız.")
 
     while cap.isOpened():
         success, frame = cap.read()
