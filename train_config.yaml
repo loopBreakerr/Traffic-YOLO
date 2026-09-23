@@ -1,0 +1,18 @@
+# src/train.py için varsayılan eğitim yapılandırması.
+# Her değer CLI argümanlarıyla override edilebilir (bkz. `python -m src.train --help`).
+#
+# VARSAYIM: Orijinal Colab eğitim notebook'u kayıp; `batch` ve `imgsz` için
+# gerçekte kullanılan değerler bilinmiyor. Aşağıdaki batch=16 ve imgsz=640
+# makul varsayılan değerlerdir (YOLOv8n için yaygın), orijinal koşuyla
+# birebir aynı olmayabilir. Farklı olduğunu biliyorsan bu dosyadan güncelle.
+
+base_model: models/best.pt   # devam edilecek (fine-tune) checkpoint
+data: visdrone_full.yaml     # train+val yolları
+epochs: 150
+patience: 20                 # early stopping - bu kadar epoch iyileşme olmazsa durur
+batch: 16                    # VARSAYIM
+imgsz: 640                   # VARSAYIM
+device: null                 # null = Ultralytics otomatik seçer (GPU varsa GPU, yoksa CPU); Colab'da 0 da yazılabilir
+project: runs/train          # çıktı kök klasörü (Colab'da Drive yolu ile override edilir)
+name: exp1_more_epochs       # bu koşunun alt klasör adı
+seed: 0

@@ -1,0 +1,27 @@
+# VisDrone2019-DET - hem train hem val split'ini içeren tam veri seti tanımı.
+# Fine-tuning (src/train.py) için kullanılır.
+#
+# train ve val split'leri src/visdrone_convert.py ile
+# data/VisDrone/{images,labels}/{train,val} altına dönüştürülmüş olmalı
+# (bkz. colab_train.ipynb).
+#
+# ÖNEMLİ: `names` sırası visdrone_val.yaml ile BİREBİR aynı ve
+# src/visdrone_convert.py'deki MODEL_CLASS_NAMES ile eşleşmeli
+# (models/best.pt alfabetik sırayla eğitildi). Biri değişirse hepsi
+# birlikte güncellenmeli.
+
+path: data/VisDrone
+train: images/train
+val: images/val
+
+names:
+  0: awning-tricycle
+  1: bicycle
+  2: bus
+  3: car
+  4: motor
+  5: pedestrian
+  6: people
+  7: tricycle
+  8: truck
+  9: van
