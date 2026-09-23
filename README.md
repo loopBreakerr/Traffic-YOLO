@@ -43,13 +43,48 @@ pip install -r requirements.txt
 (Not: requirements.txt dosyası ultralytics ve opencv-python kütüphanelerini içerir.)
 
 ### Kullanım (Usage)
-Modeli çalıştırmak için ana script'i (main.py) kullanabilirsiniz. Script, varsayılan olarak input klasöründeki videoyu işler.
 
-Video Analizi İçin:
+Tüm ayarlar `config.yaml` dosyasından okunur ve komut satırı argümanlarıyla override edilebilir. Öncelik sırası: **CLI argümanı > config.yaml > kod içi varsayılan**.
+
+Varsayılan yapılandırmayla çalıştırma:
+```bash
 python main.py
+```
 
-Webcam (Canlı Test) İçin: main.py dosyasını açın ve SOURCE_PATH değişkenini güncelleyin:
-SOURCE_PATH = 0  # 0: Webcam, 'video.mp4': Dosya yolu
+Yaygın override'lar:
+```bash
+python main.py --source input/baska_video.mp4 --output output/sonuc.mp4
+python main.py --conf 0.35 --model models/best.pt
+python main.py --config deneme.yaml
+```
+
+Webcam (canlı test) için `config.yaml` içindeki `source` değerini `0` yapın ya da:
+```bash
+python main.py --source 0
+```
+
+Önizleme penceresi olmadan (yalnızca dosyaya yazma):
+```bash
+python main.py --no-display
+```
+
+Tüm seçenekler: `python main.py --help`
+
+### Proje Yapısı (Project Structure)
+
+```
+Traffic-YOLO/
+├── config.yaml        # Varsayılan yapılandırma (path'ler, threshold, display)
+├── main.py            # İnce giriş noktası: argparse + config + pipeline
+├── src/
+│   ├── cli.py         # argparse tanımı
+│   ├── config.py      # YAML yükleme + CLI override birleştirme
+│   ├── detector.py    # YOLO model sarmalayıcı (annotated frame + ham Results)
+│   └── pipeline.py    # Video capture/writer + kare döngüsü
+├── models/best.pt
+├── input/
+└── output/
+```
 
 
 

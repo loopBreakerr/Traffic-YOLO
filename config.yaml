@@ -1,0 +1,18 @@
+# YOLOv8 Traffic Analysis - varsayılan yapılandırma
+# Buradaki her değer CLI argümanlarıyla override edilebilir (bkz. `python main.py --help`).
+
+model:
+  path: models/best.pt
+
+# Video dosyası yolu ya da webcam indeksi (webcam için: 0)
+source: input/test_video.mp4
+
+output: output/result.mp4
+
+inference:
+  confidence_threshold: 0.50
+
+display:
+  enabled: true
+  window_name: "YOLOv8 Traffic Analysis"
+  quit_key: q
