@@ -1,0 +1,9 @@
+output/*.mp4
+output/*.avi
+!output/.gitkeep
+
+# Ham veri setleri (ör. VisDrone val split) - indirilebilir/üretilebilir, repoya girmez
+data/
+
+__pycache__/
+*.pyc

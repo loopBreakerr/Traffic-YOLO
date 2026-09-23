@@ -1,0 +1,32 @@
+# VisDrone2019-DET validation split - yerel değerlendirme için.
+#
+# Sadece val split'i indirildi (VisDrone2019-DET-val.zip, ~78MB) ve
+# data/VisDrone/{images,labels}/val altına Ultralytics'in visdrone2yolo
+# formatına dönüştürüldü.
+#
+# ÖNEMLİ: `names` sırası, Ultralytics'in resmi VisDrone.yaml'ından FARKLI.
+# models/best.pt alfabetik sırayla eğitilmiş (awning-tricycle=0, ..., van=9).
+# Etiketler dönüştürülürken ham VisDrone kategori id'leri bu alfabetik sıraya
+# eşlendi; bu yaml da aynı sırayı kullanmalı, yoksa val metrikleri yanlış
+# sınıflarla eşleşir.
+
+# train yalnızca Ultralytics'in "train: ve val: zorunlu" şema kontrolünü
+# geçmek için var; train split'i indirilmedi, bu proje sadece val ile
+# değerlendirme yapıyor. train: images/val yazılması eğitim/val
+# hesaplamalarını etkilemez, sadece model.val(split='val') çağrısı
+# gerçek val split'ini kullanır.
+path: data/VisDrone
+train: images/val
+val: images/val
+
+names:
+  0: awning-tricycle
+  1: bicycle
+  2: bus
+  3: car
+  4: motor
+  5: pedestrian
+  6: people
+  7: tricycle
+  8: truck
+  9: van
