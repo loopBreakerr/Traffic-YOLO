@@ -84,6 +84,12 @@ pip install -r requirements.txt
 python main.py --model models/best.pt --source input/test_video.mp4 --output output/result.mp4 --conf 0.5
 ```
 
+> **Not:** Jupyter/Colab hücresinde çalıştırıyorsanız komutun başına `!` ekleyin ve `--no-display` bayrağını kullanın (bu ortamlarda ekran/GUI olmadığı için `cv2.imshow` çöker):
+> ```python
+> !python main.py --model models/best.pt --source input/test_video.mp4 --output output/result.mp4 --conf 0.5 --no-display
+> ```
+> Çıktıyı notebook içinde izlemek için: `from IPython.display import Video; Video("output/result.mp4", embed=True)`
+
 Webcam için `--source 0`, pencere açmadan (headless) çalıştırmak için `--no-display` ekleyin. Tüm ayarlar `config.yaml` üzerinden de değiştirilebilir; CLI argümanları config'i geçersiz kılar.
 
 ### Değerlendirme
